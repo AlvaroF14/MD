@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- Botón para volver al inicio -->
-    <a href="index.html" class="back-to-home">
+    <a href="index.php" class="back-to-home">
         <span class="material-icons">arrow_back</span>
         Volver al Inicio
     </a>

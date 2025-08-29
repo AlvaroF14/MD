@@ -154,10 +154,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   letter-spacing: -0.01em;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 body.menu-open {
   overflow: hidden;
+}
+
+.main-content {
+  flex: 1 0 auto;
 }
 
 /* Enhanced typography with better hierarchy */
@@ -693,6 +700,8 @@ p {
   background: var(--charcoal);
   color: var(--warm-white);
   padding: 4rem 0 2rem;
+  flex-shrink: 0;
+  margin-top: 0 !important;
 }
 
 .footer-content {

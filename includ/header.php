@@ -35,29 +35,31 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
         }
 
         .header {
-            background-color: #ffffff;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-            padding: 0 2rem;
+            background: linear-gradient(90deg, #fff 80%, #f7e7d3 100%);
+            box-shadow: 0 2px 12px rgba(212,165,116,0.08);
+            border-bottom: 1px solid #e7cba3;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 165, 116, 0.1);
+            padding: 0 2rem;
+            transition: box-shadow 0.2s;
         }
 
         .header-container {
-            max-width: 1400px;
+            max-width: 1300px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 56px;
+            height: 64px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            transition: transform 0.2s ease;
+            gap: 10px;
             text-decoration: none;
+            transition: transform 0.2s;
         }
 
         .logo:hover {
@@ -65,16 +67,26 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
         }
 
         .logo-image {
-            width: 36px;
-            height: 36px;
-            object-fit: contain;
-            border-radius: 6px;
+            width: 44px;
+            height: 44px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(212,165,116,0.12);
+            background: #fff;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #d4a574;
+            letter-spacing: 1px;
         }
 
         .nav-menu {
             display: flex;
+            gap: 2rem;
             list-style: none;
-            gap: 1.5rem;
             align-items: center;
         }
 
@@ -86,134 +98,133 @@ $current_page = basename($_SERVER['PHP_SELF'], '.php');
             text-decoration: none;
             color: #374151;
             font-weight: 500;
-            font-size: 15px;
-            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            padding: 0.7rem 1.2rem;
             border-radius: 8px;
-            transition: all 0.2s ease;
+            transition: all 0.2s;
             position: relative;
             letter-spacing: -0.01em;
+            background: none;
         }
 
         .nav-link:hover {
             color: #d4a574;
-            background-color: rgba(212, 165, 116, 0.08);
-            transform: translateY(-1px);
+            background: rgba(212,165,116,0.09);
+            box-shadow: 0 2px 8px rgba(212,165,116,0.07);
         }
 
         .nav-link.active {
             color: #d4a574;
-            font-weight: 600;
-            background-color: rgba(212, 165, 116, 0.05);
+            font-weight: 700;
+            background: rgba(212,165,116,0.13);
+            box-shadow: 0 2px 8px rgba(212,165,116,0.10);
         }
 
         .nav-link.active::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: 6px;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
+            width: 22px;
             height: 2px;
-            background-color: #d4a574;
+            background: #d4a574;
             border-radius: 1px;
         }
 
         .login-btn {
             background: linear-gradient(135deg, #d4a574 0%, #c19660 100%);
-            color: white !important;
-            padding: 0.75rem 1.25rem !important;
+            color: #fff !important;
+            padding: 0.7rem 1.5rem !important;
             border-radius: 8px;
-            font-weight: 600;
-            box-shadow: 0 2px 4px rgba(212, 165, 116, 0.2);
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(212,165,116,0.18);
             border: none;
+            transition: background 0.2s, box-shadow 0.2s;
         }
 
         .login-btn:hover {
             background: linear-gradient(135deg, #c19660 0%, #b08850 100%);
-            color: white !important;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 8px rgba(212, 165, 116, 0.3);
+            color: #fff !important;
+            box-shadow: 0 4px 16px rgba(212,165,116,0.28);
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .header {
-                padding: 0 1rem;
-            }
-            
+        @media (max-width: 900px) {
             .header-container {
-                height: 52px;
+                height: 56px;
             }
-            
+
+            .logo-image {
+                width: 36px;
+                height: 36px;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
             .nav-menu {
                 gap: 1rem;
             }
-            
+
             .nav-link {
-                font-size: 14px;
-                padding: 0.5rem 0.75rem;
+                font-size: 0.95rem;
+                padding: 0.5rem 0.8rem;
             }
-            
-            .logo-image {
-                width: 32px;
-                height: 32px;
+
+            .login-btn {
+                padding: 0.5rem 1rem !important;
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 600px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                gap: 10px;
+                padding: 0.5rem 0;
+            }
+
             .nav-menu {
+                flex-wrap: wrap;
                 gap: 0.5rem;
             }
-            
+
             .nav-link {
-                font-size: 13px;
+                font-size: 0.9rem;
                 padding: 0.4rem 0.6rem;
-            }
-            
-            .login-btn {
-                padding: 0.5rem 1rem !important;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header Mejorado -->
     <header class="header">
         <div class="header-container">
-            <a href="inicio.php" class="logo">
-                <img src="img/logo.png" alt="MD - Carpintería y Diseño" class="logo-image">
+            <a href="/Maderas_Diseños/index.php" class="logo">
+                <img src="/Maderas_Diseños/img/logo.png" alt="MD - Carpintería y Diseño" class="logo-image">
+                <span class="logo-text">Maderas y Diseños</span>
             </a>
-            
             <nav>
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="inicio.php" class="nav-link <?php echo ($current_page == 'inicio' || $current_page == 'index') ? 'active' : ''; ?>">
-                            Inicio
-                        </a>
+                        <a href="/Maderas_Diseños/index.php" class="nav-link <?php echo ($current_page == 'inicio' || $current_page == 'index') ? 'active' : ''; ?>">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a href="servicios.php" class="nav-link <?php echo $current_page == 'servicios' ? 'active' : ''; ?>">
-                            Servicios
-                        </a>
+                        <a href="/Maderas_Diseños/pagina/servicios.php" class="nav-link <?php echo $current_page == 'servicios' ? 'active' : ''; ?>">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a href="proyectos.php" class="nav-link <?php echo $current_page == 'proyectos' ? 'active' : ''; ?>">
-                            Proyectos
-                        </a>
+                        <a href="/Maderas_Diseños/pagina/proyectos.php" class="nav-link <?php echo $current_page == 'proyectos' ? 'active' : ''; ?>">Proyectos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="nosotros.php" class="nav-link <?php echo $current_page == 'nosotros' ? 'active' : ''; ?>">
-                            Nosotros
-                        </a>
+                        <a href="/Maderas_Diseños/pagina/nosotros.php" class="nav-link <?php echo $current_page == 'nosotros' ? 'active' : ''; ?>">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a href="contacto.php" class="nav-link <?php echo $current_page == 'contacto' ? 'active' : ''; ?>">
-                            Contacto
-                        </a>
+                        <a href="/Maderas_Diseños/pagina/contacto.php" class="nav-link <?php echo $current_page == 'contacto' ? 'active' : ''; ?>">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a href="login.php" class="nav-link login-btn <?php echo $current_page == 'login' ? 'active' : ''; ?>">
-                            Login
-                        </a>
+                        <a href="/Maderas_Diseños/login.php" class="nav-link login-btn <?php echo $current_page == 'login' ? 'active' : ''; ?>">Login</a>
                     </li>
                 </ul>
             </nav>

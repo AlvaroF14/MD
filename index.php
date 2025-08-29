@@ -30,134 +30,122 @@ include 'includ/header.php';
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
-    <!-- Hero Section -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">Creamos espacios únicos con la calidez de la madera</h1>
-                <p class="hero-description">Especialistas en diseño y fabricación de muebles personalizados, carpintería fina y soluciones en madera para tu hogar y empresa.</p>
-                <div class="hero-buttons">
-                    <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
-                    <a href="#contacto" class="btn btn-secondary">Cotizar Proyecto</a>
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Creamos espacios únicos con la calidez de la madera</h1>
+                    <p class="hero-description">Especialistas en diseño y fabricación de muebles personalizados, carpintería fina y soluciones en madera para tu hogar y empresa.</p>
+                    <div class="hero-buttons">
+                        <a href="pagina/proyectos.php" class="btn btn-primary">Ver Proyectos</a>
+                        <a href="#contacto" class="btn btn-secondary">Cotizar Proyecto</a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-image">
-                <div class="hero-card">
-                    <!-- Updated image path to match folder structure -->
-                    <img src="img/MD.jpeg" alt="Taller de carpintería profesional" class="hero-img">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="servicios" class="services">
-        <div class="container">
-            <div class="section-header">
-                    <h2 class="section-title">Nuestros Servicios</h2>
-                <p class="section-subtitle">Transformamos la madera en obras de arte funcionales</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🪑</div>
-                    <h3>Muebles Personalizados</h3>
-                    <p>Diseñamos y fabricamos muebles únicos adaptados a tus necesidades y espacios.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🏠</div>
-                    <h3>Carpintería Residencial</h3>
-                    <p>Puertas, ventanas, closets y soluciones integrales para tu hogar.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🏢</div>
-                    <h3>Proyectos Comerciales</h3>
-                    <p>Mobiliario y diseños especializados para oficinas, restaurantes y comercios.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">✨</div>
-                    <h3>Restauración</h3>
-                    <p>Devolvemos la vida a muebles antiguos con técnicas especializadas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="nosotros" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">Más de 25 años creando con madera</h2>
-                    <p class="about-description">En AXD combinamos la tradición artesanal con técnicas modernas para crear piezas excepcionales. Cada proyecto es único y refleja la pasión por trabajar con uno de los materiales más nobles de la naturaleza.</p>
-                    <div class="stats">
-                        <div class="stat">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Proyectos Completados</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">15+</span>
-                            <span class="stat-label">Años de Experiencia</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Satisfacción Garantizada</span>
+                <div class="hero-image">
+                    <div class="hero-card">
+                        <div class="carousel">
+                            <img src="img/comerciales.2.jpg"  class="carousel-img active">
+                            <img src="img/muebles.3.jpg"  class="carousel-img">
+                            <img src="img/muebles.6.jpg"  class="carousel-img">
+                            <img src="img/muebles.7.jpg"  class="carousel-img">
+                            <img src="img/muebles.jpg"  class="carousel-img">
+                            <img src="img/remodelacion.jpg"  class="carousel-img">
+                            <!-- Agrega más imágenes si lo deseas -->
                         </div>
                     </div>
                 </div>
-                <div class="about-image">
-                    <!-- Updated image path to match folder structure -->
-                    <img src="img/artesano.png" alt="Artesano trabajando con madera" class="about-img">
+            </div>
+        </section>
+        <script>
+            // Carrusel automático
+            const images = document.querySelectorAll('.carousel-img');
+            let current = 0;
+
+            setInterval(() => {
+                images[current].classList.remove('active');
+                current = (current + 1) % images.length;
+                images[current].classList.add('active');
+            }, 2000);
+        </script>
+        <style>
+            .carousel {
+                position: relative;
+                width: 100%;
+                max-width: 700px; /* Más ancho */
+                height: 440px;    /* Más alto */
+                overflow: hidden;
+                border-radius: 24px;
+                box-shadow: 0 12px 40px rgba(212,165,116,0.18);
+                background: #fff;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: auto;
+            }
+            .carousel-img {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                opacity: 0;
+                transition: opacity 0.7s;
+                z-index: 1;
+                filter: brightness(0.98) contrast(1.12) saturate(1.12);
+                /* Mejora la calidad visual */
+                image-rendering: auto;
+            }
+            .carousel-img.active {
+                opacity: 1;
+                z-index: 2;
+            }
+            @media (max-width: 900px) {
+                .carousel {
+                    max-width: 100%;
+                    height: 280px;
+                }
+            }
+            @media (max-width: 600px) {
+                .carousel {
+                    max-width: 100%;
+                    height: 180px;
+                }
+            }
+        </style>
+
+
+        <!-- About Section -->
+        <section id="nosotros" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2 class="section-title">Más de 25 años creando con madera</h2>
+                        <p class="about-description">En AXD combinamos la tradición artesanal con técnicas modernas para crear piezas excepcionales. Cada proyecto es único y refleja la pasión por trabajar con uno de los materiales más nobles de la naturaleza.</p>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Proyectos Completados</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">15+</span>
+                                <span class="stat-label">Años de Experiencia</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">100%</span>
+                                <span class="stat-label">Satisfacción Garantizada</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <!-- Updated image path to match folder structure -->
+                        <img src="img/artesano.png" alt="Artesano trabajando con madera" class="about-img">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contacto" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Hablemos de tu proyecto</h2>
-                <p class="section-subtitle">Estamos listos para hacer realidad tus ideas</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h3>📍 Ubicación</h3>
-                        <p>Av. Principal 123<br>Ciudad, País</p>
-                    </div>
-                    <div class="contact-item">
-                        <h3>📞 Teléfono</h3>
-                        <p>+1 (555) 123-4567</p>
-                    </div>
-                    <div class="contact-item">
-                        <h3>✉️ Email</h3>
-                        <p>info@axdmaderaydisenos.com</p>
-                    </div>
-                    <div class="contact-item">
-                        <h3>🕒 Horarios</h3>
-                        <p>Lun - Vie: 8:00 AM - 6:00 PM<br>Sáb: 9:00 AM - 2:00 PM</p>
-                    </div>
-                </div>
-                <!-- Improved form with better validation and styling -->
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Tu nombre" required class="form-input">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Tu email" required class="form-input">
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" name="phone" placeholder="Tu teléfono" class="form-input">
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Cuéntanos sobre tu proyecto" rows="5" required class="form-textarea"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-submit">Enviar Mensaje</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
+        </section>
+    </div>
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -170,16 +158,17 @@ include 'includ/header.php';
                 <div class="footer-links">
                     <h4>Enlaces</h4>
                     <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#proyectos">Proyectos</a></li>
-                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="index.php">Inicio</a></li>
+                        <li><a href="pagina/servicios.php">Servicios</a></li>
+                        <li><a href="pagina/proyectos.php">Proyectos</a></li>
+                        <li><a href="pagina/nosotros.php">Nosotros</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4>Contacto</h4>
-                    <p>📞 +1 (555) 123-4567</p>
-                    <p>✉️ info@axdmaderaydisenos.com</p>
+                    <p>📞 +57 (318) 6200-159</p>    
+                    <p>📞 +57 (302) 4391-242</p>
+                    <p>✉️ maderasydisenossas2021@gmail.com</p>
                 </div>
             </div>
             <div class="footer-bottom">

@@ -1,4 +1,3 @@
-
 <?php
 // Conexión a la base de datos PMO
 $servername = "localhost";
@@ -13,7 +12,7 @@ if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
     
-include 'includ/header.php';
+include '../includ/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -25,21 +24,6 @@ include 'includ/header.php';
     <link rel="stylesheet" href="../css/proyectos.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="../img/logo.png" alt="AXD Logo">
-            </div>
-            <nav class="nav">
-                <a href="../index.html">Inicio</a>
-                <a href="#servicios">Servicios</a>
-                <a href="#proyectos" class="active">Proyectos</a>
-                <a href="#nosotros">Nosotros</a>
-                <a href="#contacto">Contacto</a>
-                <a href="#login">Login</a>
-            </nav>
-        </div>
-    </header>
 
     <main class="main">
         <section class="hero-section">
@@ -56,24 +40,25 @@ include 'includ/header.php';
                     <!-- Muebles Personalizados -->
                     <div class="project-category">
                         <div class="category-header">
-                            <div class="category-icon">
-                                <img src="img/chair-icon.png" alt="Muebles Personalizados">
-                            </div>
                             <h2>Muebles Personalizados</h2>
                             <p>Diseñamos y fabricamos muebles únicos adaptados a tus necesidades y espacios.</p>
                         </div>
                         
                         <div class="project-gallery">
                             <div class="project-item">
-                                <img src="img/muebles/mesa-comedor.jpg" alt="Mesa de comedor personalizada">
+                                <a href="../img/muebles.7.jpg" target="_blank">
+                                    <img src="img/muebles/mesa-comedor.jpg" >
+                                </a>
                                 <div class="project-info">
-                                    <h3>Mesa de Comedor Rústica</h3>
-                                    <p>Mesa de comedor en madera maciza con acabado natural, diseñada para 8 personas.</p>
+                                    <h3>Cocina</h3>
+                                    <p>...</p>
                                 </div>
                             </div>
                             
                             <div class="project-item">
-                                <img src="img/muebles/biblioteca.jpg" alt="Biblioteca personalizada">
+                                <a href="img/muebles/biblioteca.jpg" target="_blank">
+                                    <img src="img/muebles/biblioteca.jpg" alt="Biblioteca personalizada">
+                                </a>
                                 <div class="project-info">
                                     <h3>Biblioteca Modular</h3>
                                     <p>Sistema de estanterías modulares en roble, adaptable a cualquier espacio.</p>
@@ -81,7 +66,9 @@ include 'includ/header.php';
                             </div>
                             
                             <div class="project-item">
-                                <img src="img/muebles/cocina-integral.jpg" alt="Cocina integral">
+                                <a href="img/muebles/cocina-integral.jpg" target="_blank">
+                                    <img src="img/muebles/cocina-integral.jpg" alt="Cocina integral">
+                                </a>
                                 <div class="project-info">
                                     <h3>Cocina Integral</h3>
                                     <p>Cocina completa con muebles altos y bajos, isla central y acabados premium.</p>
@@ -93,16 +80,15 @@ include 'includ/header.php';
                     <!-- Carpintería Residencial -->
                     <div class="project-category">
                         <div class="category-header">
-                            <div class="category-icon">
-                                <img src="img/house-icon.png" alt="Carpintería Residencial">
-                            </div>
                             <h2>Carpintería Residencial</h2>
                             <p>Puertas, ventanas, closets y soluciones integrales para tu hogar.</p>
                         </div>
                         
                         <div class="project-gallery">
                             <div class="project-item">
-                                <img src="img/residencial/puerta-principal.jpg" alt="Puerta principal">
+                                <a href="img/residencial/puerta-principal.jpg" target="_blank">
+                                    <img src="img/residencial/puerta-principal.jpg" alt="Puerta principal">
+                                </a>
                                 <div class="project-info">
                                     <h3>Puerta Principal de Cedro</h3>
                                     <p>Puerta de entrada con tallados artesanales y herrajes de seguridad.</p>
@@ -110,7 +96,9 @@ include 'includ/header.php';
                             </div>
                             
                             <div class="project-item">
-                                <img src="img/residencial/closet-vestidor.jpg" alt="Closet vestidor">
+                                <a href="img/residencial/closet-vestidor.jpg" target="_blank">
+                                    <img src="img/residencial/closet-vestidor.jpg" alt="Closet vestidor">
+                                </a>
                                 <div class="project-info">
                                     <h3>Closet Vestidor</h3>
                                     <p>Vestidor completo con sistema de organización y espejos integrados.</p>
@@ -118,7 +106,9 @@ include 'includ/header.php';
                             </div>
                             
                             <div class="project-item">
-                                <img src="img/residencial/ventanas-corredizas.jpg" alt="Ventanas corredizas">
+                                <a href="img/residencial/ventanas-corredizas.jpg" target="_blank">
+                                    <img src="img/residencial/ventanas-corredizas.jpg" alt="Ventanas corredizas">
+                                </a>
                                 <div class="project-info">
                                     <h3>Ventanas Corredizas</h3>
                                     <p>Sistema de ventanas corredizas en aluminio y madera para sala principal.</p>
@@ -130,16 +120,15 @@ include 'includ/header.php';
                     <!-- Proyectos Comerciales -->
                     <div class="project-category">
                         <div class="category-header">
-                            <div class="category-icon">
-                                <img src="img/building-icon.png" alt="Proyectos Comerciales">
-                            </div>
                             <h2>Proyectos Comerciales</h2>
                             <p>Mobiliario y diseños especializados para oficinas, restaurantes y comercios.</p>
                         </div>
                         
                         <div class="project-gallery">
                             <div class="project-item">
-                                <img src="img/comercial/oficina-ejecutiva.jpg" alt="Oficina ejecutiva">
+                                <a href="img/comercial/oficina-ejecutiva.jpg" target="_blank">
+                                    <img src="img/comercial/oficina-ejecutiva.jpg" alt="Oficina ejecutiva">
+                                </a>
                                 <div class="project-info">
                                     <h3>Oficina Ejecutiva</h3>
                                     <p>Mobiliario completo para oficina ejecutiva con escritorio, libreros y sala de juntas.</p>
@@ -147,7 +136,9 @@ include 'includ/header.php';
                             </div>
                             
                             <div class="project-item">
-                                <img src="img/comercial/restaurante-bar.jpg" alt="Restaurante y bar">
+                                <a href="img/comercial/restaurante-bar.jpg" target="_blank">
+                                    <img src="img/comercial/restaurante-bar.jpg" alt="Restaurante y bar">
+                                </a>
                                 <div class="project-info">
                                     <h3>Restaurante & Bar</h3>
                                     <p>Diseño integral de restaurante con barra, mesas y decoración en madera.</p>
@@ -155,7 +146,9 @@ include 'includ/header.php';
                             </div>
                             
                             <div class="project-item">
-                                <img src="img/comercial/recepcion-hotel.jpg" alt="Recepción de hotel">
+                                <a href="img/comercial/recepcion-hotel.jpg" target="_blank">
+                                    <img src="img/comercial/recepcion-hotel.jpg" alt="Recepción de hotel">
+                                </a>
                                 <div class="project-info">
                                     <h3>Recepción de Hotel</h3>
                                     <p>Mostrador de recepción y mobiliario de lobby con acabados de lujo.</p>
@@ -167,16 +160,15 @@ include 'includ/header.php';
                     <!-- Restauración -->
                     <div class="project-category">
                         <div class="category-header">
-                            <div class="category-icon">
-                                <img src="img/star-icon.png" alt="Restauración">
-                            </div>
                             <h2>Restauración</h2>
                             <p>Devolvemos la vida a muebles antiguos con técnicas especializadas.</p>
                         </div>
                         
                         <div class="project-gallery">
                             <div class="project-item">
-                                <img src="img/restauracion/piano-antiguo.jpg" alt="Piano antiguo restaurado">
+                                <a href="img/restauracion/piano-antiguo.jpg" target="_blank">
+                                    <img src="img/restauracion/piano-antiguo.jpg" alt="Piano antiguo restaurado">
+                                </a>
                                 <div class="project-info">
                                     <h3>Piano de Cola Antiguo</h3>
                                     <p>Restauración completa de piano de 1920, incluyendo barnizado y reparación de mecanismo.</p>
@@ -184,7 +176,9 @@ include 'includ/header.php';
                             </div>
                             
                             <div class="project-item">
-                                <img src="img/restauracion/comoda-vintage.jpg" alt="Cómoda vintage">
+                                <a href="img/restauracion/comoda-vintage.jpg" target="_blank">
+                                    <img src="img/restauracion/comoda-vintage.jpg" alt="Cómoda vintage">
+                                </a>
                                 <div class="project-info">
                                     <h3>Cómoda Vintage</h3>
                                     <p>Restauración de cómoda de los años 50 con técnicas tradicionales de ebanistería.</p>
@@ -192,7 +186,9 @@ include 'includ/header.php';
                             </div>
                             
                             <div class="project-item">
-                                <img src="img/restauracion/mesa-colonial.jpg" alt="Mesa colonial">
+                                <a href="img/restauracion/mesa-colonial.jpg" target="_blank">
+                                    <img src="img/restauracion/mesa-colonial.jpg" alt="Mesa colonial">
+                                </a>
                                 <div class="project-info">
                                     <h3>Mesa Colonial</h3>
                                     <p>Recuperación de mesa colonial del siglo XIX con tallados originales preservados.</p>
