@@ -370,7 +370,7 @@ body {
   }
 }
 
-/* Responsive */
+/* Responsive para tablets (≤ 768px) */
 @media (max-width: 768px) {
   .login-container {
     flex-direction: column;
@@ -409,6 +409,7 @@ body {
   }
 }
 
+/* Responsive para celulares (≤ 480px) */
 @media (max-width: 480px) {
   .login-section {
     padding: 30px 20px;
@@ -425,5 +426,23 @@ body {
   .social-icon {
     width: 45px;
     height: 45px;
+  }
+
+  /* Extra: mejora el tamaño del logo y textos en móvil */
+  .logo-circle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+  }
+
+  .company-name {
+    font-size: 1.2rem;
+  }
+
+  .company-description {
+    font-size: 1rem;
   }
 }

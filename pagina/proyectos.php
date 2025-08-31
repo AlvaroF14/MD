@@ -46,32 +46,32 @@ include '../includ/header.php';
                         
                         <div class="project-gallery">
                             <div class="project-item">
-                                <a href="../img/muebles.7.jpg" target="_blank">
-                                    <img src="img/muebles/mesa-comedor.jpg" >
+                                <a href="../img/muebles.2.jpg" target="_blank">
+                                    <img src="../img/muebles.2.jpg" alt="Baño moderno">
                                 </a>
                                 <div class="project-info">
-                                    <h3>Cocina</h3>
-                                    <p>...</p>
+                                    <h3>Baño Moderno</h3>
+                                    <p>Mueble de baño con acabados minimalistas y superficie de fácil limpieza.</p>
                                 </div>
                             </div>
                             
                             <div class="project-item">
-                                <a href="img/muebles/biblioteca.jpg" target="_blank">
-                                    <img src="img/muebles/biblioteca.jpg" alt="Biblioteca personalizada">
-                                </a>
-                                <div class="project-info">
-                                    <h3>Biblioteca Modular</h3>
-                                    <p>Sistema de estanterías modulares en roble, adaptable a cualquier espacio.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="project-item">
-                                <a href="img/muebles/cocina-integral.jpg" target="_blank">
-                                    <img src="img/muebles/cocina-integral.jpg" alt="Cocina integral">
+                                <a href="../img/muebles.3.jpg" target="_blank">
+                                    <img src="../img/muebles.3.jpg" alt="Cocina integral">
                                 </a>
                                 <div class="project-info">
                                     <h3>Cocina Integral</h3>
-                                    <p>Cocina completa con muebles altos y bajos, isla central y acabados premium.</p>
+                                    <p>Cocina con muebles altos y bajos, barra de granito y diseño funcional.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="project-item">
+                                <a href="../img/muebles.4.jpg" target="_blank">
+                                    <img src="../img/muebles.5.jpg" alt="Mueble de TV y recámara">
+                                </a>
+                                <div class="project-info">
+                                    <h3>Mueble de TV y Recámara</h3>
+                                    <p>Mueble modular para TV con repisas y acabados premium en recámara principal.</p>
                                 </div>
                             </div>
                         </div>
@@ -86,32 +86,32 @@ include '../includ/header.php';
                         
                         <div class="project-gallery">
                             <div class="project-item">
-                                <a href="img/residencial/puerta-principal.jpg" target="_blank">
-                                    <img src="img/residencial/puerta-principal.jpg" alt="Puerta principal">
+                                <a href="../img/carpinteria.jpg" target="_blank">
+                                    <img src="../img/carpinteria.jpg" alt="Vestíbulo moderno">
                                 </a>
                                 <div class="project-info">
-                                    <h3>Puerta Principal de Cedro</h3>
-                                    <p>Puerta de entrada con tallados artesanales y herrajes de seguridad.</p>
+                                    <h3>Vestíbulo Moderno</h3>
+                                    <p>Entrada principal con iluminación decorativa y acabados en madera.</p>
                                 </div>
                             </div>
                             
                             <div class="project-item">
-                                <a href="img/residencial/closet-vestidor.jpg" target="_blank">
-                                    <img src="img/residencial/closet-vestidor.jpg" alt="Closet vestidor">
+                                <a href="../img/carpinteria.6.jpg" target="_blank">
+                                    <img src="../img/carpinteria.6.jpg" alt="Closet vestidor">
                                 </a>
                                 <div class="project-info">
                                     <h3>Closet Vestidor</h3>
-                                    <p>Vestidor completo con sistema de organización y espejos integrados.</p>
+                                    <p>Vestidor con sistema de organización, iluminación y espejos integrados.</p>
                                 </div>
                             </div>
                             
                             <div class="project-item">
-                                <a href="img/residencial/ventanas-corredizas.jpg" target="_blank">
-                                    <img src="img/residencial/ventanas-corredizas.jpg" alt="Ventanas corredizas">
+                                <a href="../img/carpinteria.5.jpg" target="_blank">
+                                    <img src="../img/carpinteria.5.jpg" alt="Recibidor con mesa">
                                 </a>
                                 <div class="project-info">
-                                    <h3>Ventanas Corredizas</h3>
-                                    <p>Sistema de ventanas corredizas en aluminio y madera para sala principal.</p>
+                                    <h3>Recibidor con Mesa</h3>
+                                    <p>Recibidor elegante con mesa de madera y detalles decorativos.</p>
                                 </div>
                             </div>
                         </div>
@@ -126,77 +126,36 @@ include '../includ/header.php';
                         
                         <div class="project-gallery">
                             <div class="project-item">
-                                <a href="img/comercial/oficina-ejecutiva.jpg" target="_blank">
-                                    <img src="img/comercial/oficina-ejecutiva.jpg" alt="Oficina ejecutiva">
+                                <a href="../img/comerciales.jpg" target="_blank">
+                                    <img src="../img/comerciales.jpg" alt="Consultorio dental">
                                 </a>
                                 <div class="project-info">
-                                    <h3>Oficina Ejecutiva</h3>
-                                    <p>Mobiliario completo para oficina ejecutiva con escritorio, libreros y sala de juntas.</p>
+                                    <h3>Consultorio Dental</h3>
+                                    <p>Mobiliario completo para consultorio dental con área de trabajo y almacenamiento.</p>
                                 </div>
                             </div>
                             
                             <div class="project-item">
-                                <a href="img/comercial/restaurante-bar.jpg" target="_blank">
-                                    <img src="img/comercial/restaurante-bar.jpg" alt="Restaurante y bar">
+                                <a href="../img/comerciales.2.jpg" target="_blank">
+                                    <img src="../img/comerciales.2.jpg" alt="Sala de espera y recepción">
                                 </a>
                                 <div class="project-info">
-                                    <h3>Restaurante & Bar</h3>
-                                    <p>Diseño integral de restaurante con barra, mesas y decoración en madera.</p>
+                                    <h3>Sala de Espera y Recepción</h3>
+                                    <p>Área de recepción y sala de espera con muebles a medida e iluminación ambiental.</p>
                                 </div>
                             </div>
                             
                             <div class="project-item">
-                                <a href="img/comercial/recepcion-hotel.jpg" target="_blank">
-                                    <img src="img/comercial/recepcion-hotel.jpg" alt="Recepción de hotel">
+                                <a href="../img/comerciales.3.jpg" target="_blank">
+                                    <img src="../img/comerciales.3.jpg" alt="Oficina con escritorio largo">
                                 </a>
                                 <div class="project-info">
-                                    <h3>Recepción de Hotel</h3>
-                                    <p>Mostrador de recepción y mobiliario de lobby con acabados de lujo.</p>
+                                    <h3>Oficina con Escritorio Largo</h3>
+                                    <p>Oficina equipada con escritorio largo y espacio para reuniones o trabajo colaborativo.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Restauración -->
-                    <div class="project-category">
-                        <div class="category-header">
-                            <h2>Restauración</h2>
-                            <p>Devolvemos la vida a muebles antiguos con técnicas especializadas.</p>
-                        </div>
-                        
-                        <div class="project-gallery">
-                            <div class="project-item">
-                                <a href="img/restauracion/piano-antiguo.jpg" target="_blank">
-                                    <img src="img/restauracion/piano-antiguo.jpg" alt="Piano antiguo restaurado">
-                                </a>
-                                <div class="project-info">
-                                    <h3>Piano de Cola Antiguo</h3>
-                                    <p>Restauración completa de piano de 1920, incluyendo barnizado y reparación de mecanismo.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="project-item">
-                                <a href="img/restauracion/comoda-vintage.jpg" target="_blank">
-                                    <img src="img/restauracion/comoda-vintage.jpg" alt="Cómoda vintage">
-                                </a>
-                                <div class="project-info">
-                                    <h3>Cómoda Vintage</h3>
-                                    <p>Restauración de cómoda de los años 50 con técnicas tradicionales de ebanistería.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="project-item">
-                                <a href="img/restauracion/mesa-colonial.jpg" target="_blank">
-                                    <img src="img/restauracion/mesa-colonial.jpg" alt="Mesa colonial">
-                                </a>
-                                <div class="project-info">
-                                    <h3>Mesa Colonial</h3>
-                                    <p>Recuperación de mesa colonial del siglo XIX con tallados originales preservados.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
