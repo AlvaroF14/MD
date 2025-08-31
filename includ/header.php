@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "foliagro";
+$dbname = "maderasydisenos";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

@@ -2,7 +2,7 @@
 class database
 {
     private $hostname = "localhost";
-    private $database = "foliagro";
+    private $database = "maderasydisenos";
     private $username = "root";
     private $password = "";
     private $charset = "utf8mb4"; // Agregado

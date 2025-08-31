@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "foliagro";
+$dbname = "maderasydisenos";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -163,7 +163,7 @@ include '../includ/header.php';
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 AXD - Madera y Diseños. Todos los derechos reservados.</p>
+            <p>&copy; 2024 MXD - Madera y Diseños. Todos los derechos reservados.</p>
         </div>
     </footer>
 </body>
