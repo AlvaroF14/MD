@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Maderas y Diseños</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/principal.css">
@@ -180,6 +179,15 @@
                 <div class="quick-action-content">
                     <h3>Nuevo Proyecto</h3>
                     <p>Crear diseño personalizado</p>
+                </div>
+            </a>
+            <a href="calendario.php" class="quick-action">
+                <div class="quick-action-icon icon-secondary">
+                    <span class="material-icons">calendar_today</span>
+                </div>
+                <div class="quick-action-content">
+                    <h3>Ver Calendario</h3>
+                    <p>Gestionar citas y proyectos</p>
                 </div>
             </a>
             <a href="#" class="quick-action">
