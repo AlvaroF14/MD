@@ -1,20 +1,6 @@
 <?php
-// Conexión a la base de datos PMO
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "maderasydisenos";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-    
 include 'includ/header.php';
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -24,7 +10,6 @@ include 'includ/header.php';
     <title>AXD - Madera y Diseños</title>
     <link rel="stylesheet" href="css/index.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Added favicon and meta tags for better SEO -->
     <meta name="description" content="AXD Madera y Diseños - Especialistas en muebles personalizados, carpintería fina y soluciones en madera para hogar y empresa">
     <meta name="keywords" content="carpintería, muebles personalizados, madera, diseño, AXD">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
@@ -51,14 +36,14 @@ include 'includ/header.php';
                             <img src="img/muebles.7.jpg"  class="carousel-img">
                             <img src="img/muebles.jpg"  class="carousel-img">
                             <img src="img/remodelacion.jpg"  class="carousel-img">
-                            <!-- Agrega más imágenes si lo deseas -->
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Carrusel automático -->
         <script>
-            // Carrusel automático
             const images = document.querySelectorAll('.carousel-img');
             let current = 0;
 
@@ -68,12 +53,13 @@ include 'includ/header.php';
                 images[current].classList.add('active');
             }, 2000);
         </script>
+
         <style>
             .carousel {
                 position: relative;
                 width: 100%;
-                max-width: 700px; /* Más ancho */
-                height: 440px;    /* Más alto */
+                max-width: 700px;
+                height: 440px;
                 overflow: hidden;
                 border-radius: 24px;
                 box-shadow: 0 12px 40px rgba(212,165,116,0.18);
@@ -94,7 +80,6 @@ include 'includ/header.php';
                 transition: opacity 0.7s;
                 z-index: 1;
                 filter: brightness(0.98) contrast(1.12) saturate(1.12);
-                /* Mejora la calidad visual */
                 image-rendering: auto;
             }
             .carousel-img.active {
@@ -102,19 +87,12 @@ include 'includ/header.php';
                 z-index: 2;
             }
             @media (max-width: 900px) {
-                .carousel {
-                    max-width: 100%;
-                    height: 280px;
-                }
+                .carousel { height: 280px; }
             }
             @media (max-width: 600px) {
-                .carousel {
-                    max-width: 100%;
-                    height: 180px;
-                }
+                .carousel { height: 180px; }
             }
         </style>
-
 
         <!-- About Section -->
         <section id="nosotros" class="about">
@@ -139,7 +117,6 @@ include 'includ/header.php';
                         </div>
                     </div>
                     <div class="about-image">
-                        <!-- Updated image path to match folder structure -->
                         <img src="img/artesano.png" alt="Artesano trabajando con madera" class="about-img">
                     </div>
                 </div>
@@ -151,7 +128,6 @@ include 'includ/header.php';
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <!-- Updated image path to match folder structure -->
                     <img src="img/logo.png" alt="AXD Madera y Diseños" class="logo">
                     <p>Creando espacios únicos con la calidez de la madera</p>
                 </div>
@@ -177,41 +153,42 @@ include 'includ/header.php';
         </div>
     </footer>
 
-    <!-- Enhanced JavaScript with better functionality and animations -->
+    <!-- Scripts -->
     <script>
-        // Mobile menu toggle with improved animations
+        // Mobile menu toggle
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         const body = document.body;
 
-        hamburger.addEventListener('click', () => {
-            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-            
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            body.classList.toggle('menu-open');
-            
-            hamburger.setAttribute('aria-expanded', !isExpanded);
-        });
-
-        // Close menu when clicking on nav links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                body.classList.remove('menu-open');
-                hamburger.setAttribute('aria-expanded', 'false');
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+                
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                body.classList.toggle('menu-open');
+                
+                hamburger.setAttribute('aria-expanded', !isExpanded);
             });
-        });
 
-        // Smooth scrolling with offset for fixed header
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    body.classList.remove('menu-open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+
+        // Smooth scroll fix
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const headerHeight = document.querySelector('.header').offsetHeight;
-                    const targetPosi4tion = target.offsetTop - headerHeight;
+                    const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
+                    const targetPosition = target.offsetTop - headerHeight;
                     
                     window.scrollTo({
                         top: targetPosition,
@@ -219,67 +196,6 @@ include 'includ/header.php';
                     });
                 }
             });
-        });
-
-        // Header scroll effect
-        let lastScrollTop = 0;
-        const header = document.querySelector('.header');
-
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                header.classList.add('header-hidden');
-            } else {
-                header.classList.remove('header-hidden');
-            }
-            
-            if (scrollTop > 50) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
-
-        // Form submission with validation
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simple form validation
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            
-            if (name && email && message) {
-                // Here you would typically send the data to a server
-                alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
-                this.reset();
-            } else {
-                alert('Por favor, completa todos los campos requeridos.');
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.service-card, .stat, .contact-item').forEach(el => {
-            observer.observe(el);
         });
     </script>
 </body>

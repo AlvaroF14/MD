@@ -11,19 +11,20 @@ $db = new database();
 $conexion = $db->conectar();
 
 try {
-    // FullCalendar normalmente envía un rango de fechas (start y end)
     $start = isset($_GET['start']) ? $_GET['start'] : null;
     $end   = isset($_GET['end']) ? $_GET['end'] : null;
 
     if ($start && $end) {
+        // Solo traer citas dentro del rango
         $sql = "SELECT id_evento, titulo, descripcion, fecha_inicio, fecha_fin 
                 FROM calendario 
-                WHERE fecha_inicio >= ? AND fecha_fin <= ?";
+                WHERE tipo_evento = 'cita' AND fecha_inicio >= ? AND fecha_fin <= ?";
         $stmt = $conexion->prepare($sql);
         $stmt->execute([$start, $end]);
     } else {
-        // Si no llega rango, devolver todos los eventos
-        $sql = "SELECT id_evento, titulo, descripcion, fecha_inicio, fecha_fin FROM calendario";
+        // Todas las citas
+        $sql = "SELECT id_evento, titulo, descripcion, fecha_inicio, fecha_fin 
+                FROM calendario WHERE tipo_evento = 'CITA'";
         $stmt = $conexion->query($sql);
     }
 
@@ -31,9 +32,11 @@ try {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $eventos[] = [
             "id"    => $row['id_evento'],
-            "title" => $row['titulo'],
+            "title" => "Reservado",          // texto que se muestra
             "start" => $row['fecha_inicio'],
             "end"   => $row['fecha_fin'],
+            "display" => "background",       // bloque deshabilitado
+            "backgroundColor" => "rgba(220,53,69,0.3)", // rojo semi-transparente
             "extendedProps" => [
                 "descripcion" => $row['descripcion']
             ]
@@ -48,3 +51,4 @@ try {
         "message" => "Error en BD: " . $e->getMessage()
     ]);
 }
+?>
