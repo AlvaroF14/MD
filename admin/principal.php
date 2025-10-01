@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario']) || $_SESSION['usuario']['rol'] !== 'ADMINISTRADOR') {
+    header('Location: ../index.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -172,7 +180,7 @@
 
         <!-- Quick Actions -->
         <div class="quick-actions">
-            <a href="#" class="quick-action">
+            <a href="crearProyecto.php" class="quick-action">
                 <div class="quick-action-icon icon-primary">
                     <span class="material-icons">add_circle</span>
                 </div>
@@ -217,55 +225,19 @@
                     <p>Consultar estadísticas de ventas</p>
                 </div>
             </a>
+
+            <a href="nuevoUsuario.php" class="quick-action">
+                <div class="quick-action-icon icon-success">
+                    <span class="material-icons">person_add</span>
+                </div>
+                <div class="quick-action-content">
+                    <h3>Crear Usuario</h3>
+                    <p>Registrar nuevos empleados o clientes</p>
+                </div>
+            </a>
         </div>
     </div>
 
-    <script>
-        // Recarga automática del dashboard cada 5 minutos
-        setTimeout(function() {
-            location.reload();
-        }, 300000);
-
-        // Añade animación de carga al hacer clic en acciones rápidas
-        document.querySelectorAll('.quick-action').forEach(action => {
-            action.addEventListener('click', function(e) {
-                e.preventDefault();
-                const icon = this.querySelector('.material-icons');
-                const originalIcon = icon.textContent;
-                icon.textContent = 'hourglass_empty';
-                
-                setTimeout(() => {
-                    icon.textContent = originalIcon;
-                }, 1000);
-            });
-        });
-
-        // Animación de números al cargar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            const numbers = document.querySelectorAll('.stat-card-number, .summary-stat-number');
-            numbers.forEach(number => {
-                const text = number.textContent.replace(/[^0-9]/g, '');
-                const finalValue = parseInt(text) || 0;
-                let currentValue = 0;
-                const increment = finalValue / 50;
-                
-                const timer = setInterval(() => {
-                    currentValue += increment;
-                    if (currentValue >= finalValue) {
-                        currentValue = finalValue;
-                        clearInterval(timer);
-                    }
-                    
-                    if (number.textContent.includes('$')) {
-                        number.textContent = '$' + Math.floor(currentValue).toLocaleString();
-                    } else if (number.textContent.includes('%')) {
-                        number.textContent = Math.floor(currentValue) + '%';
-                    } else {
-                        number.textContent = Math.floor(currentValue).toLocaleString();
-                    }
-                }, 20);
-            });
-        });
-    </script>
+    <script src="../js/principalAdmin.js"></script>
 </body>
 </html>

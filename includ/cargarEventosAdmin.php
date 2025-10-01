@@ -8,43 +8,52 @@ $con = $db->conectar();
 
 $eventos = [];
 
-// Obtener las citas de la tabla 'calendario', se usan los eventos de tipo 'CITA' que son los que agendan los clientes
-$query_citas = $con->query("SELECT titulo, fecha_inicio, fecha_fin FROM calendario WHERE tipo_evento = 'CITA'");
-$citas = $query_citas->fetchAll(PDO::FETCH_ASSOC);
+// Obtener eventos de la tabla 'calendario' con la estructura correcta
+$query = $con->query("SELECT id_evento, titulo, descripcion, fecha_inicio, fecha_fin, tipo_evento, prioridad, id_cliente FROM calendario");
+$eventos_db = $query->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($citas as $cita) {
-    $eventos[] = [
-        'title' => 'Cita: ' . $cita['titulo'],
-        'start' => $cita['fecha_inicio'],
-        'end'   => $cita['fecha_fin'],
-        'color' => '#007bff' // Un color azul para las citas
-    ];
-}
-
-//Obtener los proyectos de la tabla 'proyectos'
-$query_proyectos = $con->query("SELECT descripcion, fecha_inicio, fecha_fin, estado FROM proyectos");
-$proyectos = $query_proyectos->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($proyectos as $proyecto) {
-    // Asignar color según el estado del proyecto
-    $color = '#28a745'; // Verde para 'EN_PROCESO'
-    if ($proyecto['estado'] === 'FINALIZADO') {
-        $color = '#6c757d'; // Gris para 'FINALIZADO'
-    } elseif ($proyecto['estado'] === 'CANCELADO') {
-        $color = '#dc3545'; // Rojo para 'CANCELADO'
+foreach ($eventos_db as $evento) {
+    // Asignar colores TRANSPARENTES según el tipo de evento
+    if ($evento['tipo_evento'] === 'CITA') {
+        $color = 'rgba(220, 53, 69, 0.7)'; // Rojo transparente
+        $title = 'Cita: ' . $evento['titulo'];
+    } elseif ($evento['tipo_evento'] === 'PROYECTO') {
+        $color = 'rgba(141, 101, 70, 0.7)'; // Marrón transparente
+        $title = 'Proyecto: ' . $evento['titulo'];
+    } elseif ($evento['tipo_evento'] === 'TAREA') {
+        $color = 'rgba(108, 117, 125, 0.7)'; // Gris transparente
+        $title = 'Tarea: ' . $evento['titulo'];
+    } else {
+        $color = 'rgba(23, 162, 184, 0.7)'; // Azul transparente por defecto
+        $title = $evento['titulo'];
     }
 
+    // AGREGAR PRIORIDAD AL TÍTULO 
+    $prioridadEmoji = '';
+    if ($evento['prioridad'] === 'ALTA') {
+        $prioridadEmoji = ' 🔴'; 
+    } elseif ($evento['prioridad'] === 'MEDIA') {
+        $prioridadEmoji = ' 🟡'; 
+    } elseif ($evento['prioridad'] === 'BAJA') {
+        $prioridadEmoji = ' 🟢'; 
+    }
+    
+    $title .= $prioridadEmoji;
+
     $eventos[] = [
-        'title' => 'Proyecto: ' . $proyecto['descripcion'],
-        'start' => $proyecto['fecha_inicio'],
-        'end'   => $proyecto['fecha_fin'],
+        'id' => $evento['id_evento'], // Cambiado a id_evento
+        'title' => $title,
+        'start' => $evento['fecha_inicio'],
+        'end' => $evento['fecha_fin'],
         'color' => $color,
         'extendedProps' => [
-            'status' => $proyecto['estado']
+            'tipo' => $evento['tipo_evento'],
+            'descripcion' => $evento['descripcion'],
+            'prioridad' => $evento['prioridad'],
+            'id_cliente' => $evento['id_cliente']
         ]
     ];
 }
 
-//Devolver todos los eventos como JSON
 echo json_encode($eventos);
 ?>

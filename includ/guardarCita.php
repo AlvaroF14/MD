@@ -1,46 +1,61 @@
 <?php
-require("../conex/conexion.php");
-header('Content-Type: application/json; charset=utf-8');
+require_once __DIR__ . "/../conex/conexion.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo       = $_POST['titulo'] ?? null;
-    $descripcion  = $_POST['descripcion'] ?? null;
+$db = new database();
+$pdo = $db->conectar();
+
+try {
+    // Recibir datos del formulario
+    $nombre      = $_POST['nombre'] ?? null;
+    $apellidos   = $_POST['apellidos'] ?? null;
+    $telefono    = $_POST['telefono'] ?? null;
+    $correo      = $_POST['correo'] ?? null;
+    $direccion   = $_POST['direccion'] ?? null;
+    $descripcion = $_POST['descripcion'] ?? null;
     $fecha_inicio = $_POST['fecha_inicio'] ?? null;
     $fecha_fin    = $_POST['fecha_fin'] ?? null;
-    $id_cliente   = $_POST['id_cliente'] ?? null; // cliente que agenda la cita
 
-    if (!$titulo || !$descripcion || !$fecha_inicio || !$fecha_fin || !$id_cliente) {
+    if (!$nombre || !$apellidos || !$telefono || !$correo || !$direccion || !$descripcion || !$fecha_inicio || !$fecha_fin) {
         echo json_encode([
             "status" => "error",
-            "message" => "Faltan datos obligatorios"
+            "message" => "Faltan campos obligatorios"
         ]);
         exit;
     }
 
-    try {
-        $pdo = (new database())->conectar();
+    //Insertar en tabla cliente
+    $sqlCliente = "INSERT INTO clientes (nombre, apellidos, telefono, correo, direccion) 
+                   VALUES (:nombre, :apellidos, :telefono, :correo, :direccion)";
+    $stmt = $pdo->prepare($sqlCliente);
+    $stmt->execute([
+        ":nombre" => $nombre,
+        ":apellidos" => $apellidos,
+        ":telefono" => $telefono,
+        ":correo" => $correo,
+        ":direccion" => $direccion
+    ]);
+    $id_cliente = $pdo->lastInsertId();
 
-        $sql = "INSERT INTO calendario (titulo, descripcion, fecha_inicio, fecha_fin, id_cliente, creado_por)
-                VALUES (?, ?, ?, ?, ?, NULL)";
+    // Insertar en tabla calendario
+    $titulo = "Cita de " . $nombre;
+    $sqlEvento = "INSERT INTO calendario (titulo, descripcion, fecha_inicio, fecha_fin, prioridad, tipo_evento, id_cliente, creado_por) 
+                  VALUES (:titulo, :descripcion, :fecha_inicio, :fecha_fin, 'MEDIA', 'CITA', :id_cliente, NULL)";
+    $stmt = $pdo->prepare($sqlEvento);
+    $stmt->execute([
+        ":titulo" => $titulo,
+        ":descripcion" => $descripcion,
+        ":fecha_inicio" => $fecha_inicio,
+        ":fecha_fin" => $fecha_fin,
+        ":id_cliente" => $id_cliente
+    ]);
 
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
-            $titulo,
-            $descripcion,
-            $fecha_inicio,
-            $fecha_fin,
-            $id_cliente
-        ]);
-
-        echo json_encode([
-            "status" => "ok",
-            "message" => "Cita guardada con éxito"
-        ]);
-    } catch (PDOException $e) {
-        echo json_encode([
-            "status" => "error",
-            "message" => "Error en BD: " . $e->getMessage()
-        ]);
-    }
+    echo json_encode([
+        "status" => "ok",
+        "message" => "Cita guardada correctamente"
+    ]);
+} catch (Exception $e) {
+    echo json_encode([
+        "status" => "error",
+        "message" => "Error en el servidor: " . $e->getMessage()
+    ]);
 }
-?>

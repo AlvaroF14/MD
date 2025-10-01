@@ -1,6 +1,13 @@
 <?php
-// Aquí podríamos agregar lógica de sesión para asegurar que solo el admin pueda ver esto.
+require("../conex/conexion.php");
+$db = new database();
+$con = $db->conectar();
+
+// Obtener lista de clientes
+$queryClientes = $con->query("SELECT id_cliente, CONCAT(nombre, ' ', apellidos) AS nombre_completo FROM clientes");
+$clientes = $queryClientes->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -47,30 +54,53 @@
     <!-- Contenedor del calendario -->
     <div id="calendar"></div>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const calendarEl = document.getElementById('calendar');
+    <!-- Modal para crear citas -->
+    <div id="modalCita" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:1000;">
+        <div style="background:white; margin:50px auto; padding:20px; width:90%; max-width:500px; border-radius:8px;">
+            <h3>Crear Nueva Cita</h3>
+            <form id="formCita">
+                <input type="hidden" id="fecha_inicio_modal">
+                <input type="hidden" id="fecha_fin_modal">
+                
+                <div style="margin-bottom:15px;">
+                    <label>Título: *</label>
+                    <input type="text" id="titulo_modal" style="width:100%; padding:8px;" required>
+                </div>
+                
+                <div style="margin-bottom:15px;">
+                    <label>Descripción:</label>
+                    <textarea id="descripcion_modal" style="width:100%; padding:8px; height:80px;"></textarea>
+                </div>
 
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            locale: 'es',
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-            },
-            // Este es el punto clave: usaremos un nuevo archivo para cargar los eventos del admin
-            events: '../includ/cargarEventosAdmin.php',
-            
-            // Podríamos añadir más interactividad aquí en el futuro, como hacer clic en un evento para ver detalles.
-            eventClick: function(info) {
-                alert('Evento: ' + info.event.title + '\nEstado: ' + (info.event.extendedProps.status || 'No definido'));
-            }
-        });
+                <div style="margin-bottom:15px;">
+                    <label>Prioridad:</label>
+                    <select id="prioridad_modal" style="width:100%; padding:8px;">
+                        <option value="MEDIA">Media</option>
+                        <option value="ALTA">Alta</option>
+                        <option value="BAJA">Baja</option>
+                    </select>
+                </div>
 
-        calendar.render();
-    });
-    </script>
-
+                <div class="margin-bottom:15px;">
+                    <label for="cliente_modal">Cliente</label>
+                    <select id="cliente_modal" name="cliente_modal" style="width:100%; padding:8px;" required>
+                        <option value="">Seleccione un cliente</option>
+                        <?php foreach ($clientes as $cliente): ?>
+                            <option value="<?= $cliente['id_cliente'] ?>">
+                                <?= htmlspecialchars($cliente['nombre_completo']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                
+                <div style="text-align:right;">
+                    <button type="button" onclick="document.getElementById('modalCita').style.display='none'" style="padding:8px 15px; margin-right:10px;">Cancelar</button>
+                    <button type="submit" style="padding:8px 15px; background:#007bff; color:white; border:none;">Guardar Cita</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="../js/adminCalendario.js"> </script>
 </body>
 </html>
