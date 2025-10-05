@@ -15,9 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
-        eventContent: function(arg) {
-            return { html: '<b>Reservado</b>' };
-        },
         select: function(info) {
             function formatForMySQL(d) {
                 const date = new Date(d);

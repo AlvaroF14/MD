@@ -18,7 +18,7 @@ try {
         // Solo traer citas dentro del rango
         $sql = "SELECT id_evento, titulo, descripcion, fecha_inicio, fecha_fin 
                 FROM calendario 
-                WHERE tipo_evento = 'cita' AND fecha_inicio >= ? AND fecha_fin <= ?";
+                WHERE tipo_evento = 'CITA' AND fecha_inicio >= ? AND fecha_fin <= ?";
         $stmt = $conexion->prepare($sql);
         $stmt->execute([$start, $end]);
     } else {
